@@ -24,6 +24,10 @@ Laravel Blog is a full-featured blogging platform built with Laravel. It include
 - Node.js & npm
 - MySQL or any other supported database
 
+### Admin Credentials
+    Email: admin@example.com,
+    Password: 12345
+
 ### Steps
 
 1. **Clone the repository:**
