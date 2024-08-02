@@ -1,64 +1,101 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Laravel-Advanced-Blog-System
+# Laravel Blog
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Laravel Blog is a full-featured blogging platform built with Laravel. It includes role-based authentication, API authentication, social login (Google and Facebook), advanced caching, routing, middleware usage, user activity logging, and extensive test coverage.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Role-Based Authentication:** Using Laravel Breeze for easy and secure role-based login.
+- **Soft Delete:** Using Laravel soft delete in this project.
+- **API Authentication:** Implemented with Laravel Sanctum for secure API access.
+- **Social Login:** Supports Google and Facebook login via Laravel Socialite.
+- **Caching:** Enhanced performance with caching for faster load times.
+- **Advanced Routing:** Sophisticated routing for better request handling.
+- **Multiple Middleware:** Uses multiple middleware for robust request processing.
+- **User Activity Logging:** Logs user activities for monitoring and analytics.
+- **Test Cases:** Comprehensive test cases for various functions and components.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Installation
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Prerequisites
 
-## Learning Laravel
+- PHP >= 7.3
+- Composer
+- Node.js & npm
+- MySQL or any other supported database
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Steps
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/your-username/laravel-blog.git
+   cd laravel-blog
 
-## Laravel Sponsors
+   composer install
+    npm install
+   
+   Copy the .env.example file to .env:
+   cp .env.example .env
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
+Set up the database:
+- Update the .env file with your database credentials.
+- Run the following commands to migrate and seed the database
+    ```sh
+         php artisan migrate
+         php artisan db:seed
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Generate application key:
 
-## Contributing
+        php artisan key:generate
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Configure Socialite:
+Add your Google and Facebook credentials to the .env file:
+    
+    GOOGLE_CLIENT_ID=your-google-client-id
+    GOOGLE_CLIENT_SECRET=your-google-client-secret
+    GOOGLE_REDIRECT=http://localhost:8000/auth/google/callback
+    
+    FACEBOOK_CLIENT_ID=your-facebook-client-id
+    FACEBOOK_CLIENT_SECRET=your-facebook-client-secret
+    FACEBOOK_REDIRECT=http://localhost:8000/auth/facebook/callback
 
-## Code of Conduct
+Run the development server:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    php artisan serve
+    npm run dev
 
-## Security Vulnerabilities
+Usage:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+ Role-Based Login:
+  Laravel Breeze is used for handling role-based authentication. Ensure you have set up your roles correctly in the database.
+  
+ API Authentication:
+  Laravel Sanctum is used for API authentication. Protect your routes using Sanctum middleware.
+  
+Social Login:
+  Use the following routes for social login:
+    Google: /auth/google
+    Facebook: /auth/facebook
+    
+Caching:
+  The application uses caching for improved performance. Cache configurations can be found in config/cache.php.
+  
+Advanced Routing:
+  The application employs advanced routing techniques for efficient request handling. Check routes/web.php and routes/api.php for more details.
+  
+Middleware:
+  Multiple middleware are used for various purposes like authentication, logging, etc. Custom middleware can be found in app/Http/Middleware.
+  
+User Activity Logging:
+  User activities are logged for monitoring purposes. The logging logic can be found in app/Http/Middleware/LogUserActivity.php.
+  
+Testing:
+      
+    php artisan test
 
-## License
+Contributing:
+    Contributions are welcome! Please submit a pull request or open an issue to discuss what you would like to change.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+License:
+    This project is open-sourced software licensed under the MIT license.
